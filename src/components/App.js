@@ -28,28 +28,32 @@ class App extends React.Component {
       currentDate:today
   }
 
+  // Function to enable change of base currency or convert from currency
   changeBaseCurrency =(e) => {
     this.setState({ baseCurrency: e.target.value});
    
     
   }
   
+  // Function to enable change or make choice of desired convertTo currency
   changeConvertToCurrency = (e) => {
     this.setState({
       convertToCurrency: e.target.value
     });
   }
   
+  // set base/initial amount function
   changeBaseAmount = (e) => {
    this.setState({
      baseAmount: e.target.value
    });
   }
   
+  // Function to calculate the amount equivalent to convertToCurrency from base currency currency
   getConvertedCurrency = (baseAmount,convertToCurrency,rates) => {
       return Number.parseFloat(baseAmount * rates[convertToCurrency]).toFixed(4);
   }
-
+ // function to get currency exchange with respect to specific dates
   changeDate=(e)=>{
     e.preventDefault();
     if(this.input.current.value==='') this.setState({date:'latest'})
