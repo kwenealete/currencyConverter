@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 
+
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -16,13 +17,13 @@ class App extends React.Component {
     this.input = React.createRef();
     this.base = React.createRef();
     this.value = React.createRef();
+    
   }
   state = {
       baseCurrency:'GBP',
       convertToCurrency:'USD',
       baseAmount: 1,
       rates: [],
-      monyaCurrency:{'MKA': 1.2346} ,
       date:'latest',
       currencies: [],
       currentDate:today
@@ -47,24 +48,29 @@ class App extends React.Component {
    this.setState({
      baseAmount: e.target.value
    });
+   this.callAPI(e.target.value)
   }
   
   // Function to calculate the amount equivalent to convertToCurrency from base currency currency
-  getConvertedCurrency = (baseAmount,convertToCurrency,rates) => {
-      return Number.parseFloat(baseAmount * rates[convertToCurrency]).toFixed(4);
+  getConvertedCurrency = (baseAmount,convertToCurrency, rates) => {
+       return Number.parseFloat(baseAmount * rates[convertToCurrency]).toFixed(4);
+      
+
   }
  // function to get currency exchange with respect to specific dates
   changeDate=(e)=>{
     e.preventDefault();
     if(this.input.current.value==='') this.setState({date:'latest'})
     else this.setState({date:this.input.current.value})
-    console.log(this.state.currentDate);
+    
         
   }
-  
+
+
+ 
   componentDidMount() {
     const {date, baseCurrency} = this.state
-  const api = `http://data.fixer.io/api/${date}?access_key=ad814494ac07535f9ab09bd96e3f99d0&?base=${baseCurrency}`;
+  const api = `https://api.exchangeratesapi.io/${date}?base=${baseCurrency}`;
  fetch(api).then(res=>res.json())
     .then(data => this.setState({
       
@@ -76,7 +82,7 @@ class App extends React.Component {
   }
   componentDidUpdate() {
       const {date, baseCurrency} = this.state
-      const api = `http://data.fixer.io/api/${date}?access_key=ad814494ac07535f9ab09bd96e3f99d0&?base=${baseCurrency}`;
+      const api = `https://api.exchangeratesapi.io/${date}?base=${baseCurrency}`;
      fetch(api).then(res=>res.json())
         .then(data => this.setState({
           
@@ -99,7 +105,7 @@ class App extends React.Component {
         <Header />
         <div className="form-container">
       
-          <form className='ui mini form'>
+          <form className='form'>
                   
          <h3>Convert from: {baseCurrency}</h3>
           <select  value={baseCurrency} onChange={this.changeBaseCurrency}>
@@ -119,9 +125,9 @@ class App extends React.Component {
                   onChange={this.changeBaseAmount}>
           </input>
           <h3>Date:</h3>
-          <p>You can get your rates as far back as  01/01/1990 </p>
+          <p>You can get your rates as far back as  01/01/1999 </p>
            <input type='date'
-           id="start" name="trip-start"
+            name="trip-start"
            min="1999-01-01" max={this.state.currentDate} 
                   placeholder='YYYY-MM-DD'
                   ref={this.input}>
