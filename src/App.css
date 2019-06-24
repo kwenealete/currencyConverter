@@ -17,42 +17,57 @@ h3{
 
 
 
-div {
+/* div {
+  
   margin: 2rem 20rem;
   padding: 10 auto;
   background: rgb(158, 160, 224);
   border-radius: 8px;
-}
+} */
 
 
 .form-container {
+  border: 1px solid black;
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 2rem auto;
+  padding: 10 auto;
+  background: rgb(59, 206, 206);
+  border-radius: 8px;
+  margin-bottom: 10px
 }
 
 .form {
-  padding-bottom: 15rem;
+  
+  margin: 4rem auto;
 }
 
 #footer {
   text-align: center;
   font-size: 18px;
-  float:right; 
+  margin-top: 75px;
   margin-bottom: 1px;
   margin-right: 10px;
-  color: rgb(10, 111, 226)
+  color: rgba(11, 66, 138, 0.856);
+  
 }
 
 #header {
   text-align: center;
   font-size: 45px; 
   margin-bottom: 2px;
-  color: aqua
+  padding-top: 5rem;
+  color: rgb(21, 52, 230)
 }
 
 #result-text {
   padding-left: 1.1rem;
   padding-bottom: 2rem;
+  text-align: center;
+  color: rgb(64, 20, 221);
+  font-weight: bolder
+  
 }
+

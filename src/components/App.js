@@ -119,6 +119,7 @@ class App extends React.Component {
                   onChange={this.changeBaseAmount}>
           </input>
           <h3>Date:</h3>
+          <p>You can get your rates as far back as  01/01/1990 </p>
            <input type='date'
            id="start" name="trip-start"
            min="1999-01-01" max={this.state.currentDate} 
@@ -127,7 +128,7 @@ class App extends React.Component {
           </input>
           <button onClick={this.changeDate}>Click</button>                                    
           </form>                       
-          <h2 id='result-text'>{baseAmount} {baseCurrency} is equivalent to {result} {convertToCurrency}</h2>
+          <h2 id='result-text'> {baseAmount} {baseCurrency} is equivalent to {result} {convertToCurrency}</h2>
        
         </div>
         <Footer />
