@@ -2,9 +2,7 @@ import React from 'react';
 
 const Header = () => (
     
-    <div>
-        <h1 id='header' >Currency Converter </h1>
-    </div>
+    <h2><span>Currency</span> Converter <span role="img" aria-label="money" >&#x1f4b5;</span></h2>
 )
 
 export default Header
